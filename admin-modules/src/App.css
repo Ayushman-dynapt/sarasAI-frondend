@@ -1,0 +1,32 @@
+body{
+    background-color: #f8f9fa;
+    font-family: "Lucida Console", "Courier New", monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title{
+    color: black;
+    margin: 0;
+    padding:2px;
+    font-size : 16px;
+}
+
+.sub-title{
+    font-size: 10px;
+    color: grey;
+    margin: 0;
+    padding:2px;
+    letter-spacing: 3px;
+}
+
+.text-bold {
+    font-weight: bold;
+    color: black;
+}
+
+.text-grey {
+    color: grey;
+    font-size: small;
+}
