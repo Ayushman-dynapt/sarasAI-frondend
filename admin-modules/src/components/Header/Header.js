@@ -7,7 +7,7 @@ import Profile from './Profile';
 const Header = () => {
     return (
         <header>  
-            <Grid container spacing={1} sx={{bgcolor: 'white', p: 1, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)' }}>
+            <Grid container spacing={1} sx={{bgcolor: 'white', p: 1, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)' }}>
                 <Grid item xs={1.5} sx={{display:'flex', alignItems:'center', textAlign:'center' ,justifyContent:'flex-start'}}>
                     <img src={sarasai_logo} alt="Sarasai logo" style={{ width: '56px', height:'56px' }} />
                     <span>
