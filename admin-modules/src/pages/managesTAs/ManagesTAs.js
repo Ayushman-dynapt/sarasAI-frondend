@@ -21,9 +21,9 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
-//import { fakeData, usStates } from './makeData';
+import managetas from '../../fakeData/managetas.json'
+import { OnOffSwitch } from '../../components/Switch';
 import EditIcon from '@mui/icons-material/Edit';
-//import DeleteIcon from '@mui/icons-material/Delete';
 import ControlPointOutlinedIcon from '@mui/icons-material/ControlPointOutlined';
 
 const TAtable  = () => {
@@ -31,12 +31,6 @@ const TAtable  = () => {
 
   const columns = useMemo(
     () => [
-
-      {
-        serialize: (row) => row.id,
-        header: 'S.No',
-        enableEditing: false,
-      },
 
       {
         accessorKey: 'taName',
@@ -137,10 +131,11 @@ const TAtable  = () => {
 
   const table = useMaterialReactTable({
     columns,
-    data: fetchedUsers,
+    data:  managetas || fetchedUsers, //use the fetched data from the api
     createDisplayMode: 'modal', //default ('row', and 'custom' are also available)
     editDisplayMode: 'modal', //default ('row', 'cell', 'table', and 'custom' are also available)
     enableEditing: true,
+    enableRowNumbers : true,
     getRowId: (row) => row.id,
     muiToolbarAlertBannerProps: isLoadingUsersError
       ? {
@@ -150,14 +145,16 @@ const TAtable  = () => {
       : undefined,
     muiTableContainerProps: {
       sx: {
-        minHeight: '500px',
+        maxHeight: '60vh',
+        maxWidth: '83vw',
+        margin: 'auto',
+        scrollbarWidth: 'thin'
       },
     },
     muiPaginationProps: {
       showRowsPerPage: false,
-      shape: 'rounded',
       variant: 'outlined',
-      color: 'primary',
+      color: 'primary'
     },
   paginationDisplayMode: 'pages',
     onCreatingRowCancel: () => setValidationErrors({}),
@@ -167,7 +164,7 @@ const TAtable  = () => {
     //optionally customize modal content
     renderCreateRowDialogContent: ({ table, row, internalEditComponents }) => (
       <>
-        <DialogTitle variant="h3">Create New User</DialogTitle>
+        <DialogTitle variant="h5">Create New User</DialogTitle>
         <DialogContent
           sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
         >
@@ -181,7 +178,7 @@ const TAtable  = () => {
     //optionally customize modal content
     renderEditRowDialogContent: ({ table, row, internalEditComponents }) => (
       <>
-        <DialogTitle variant="h3">Edit User</DialogTitle>
+        <DialogTitle variant="h5">Edit User</DialogTitle>
         <DialogContent
           sx={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
         >
@@ -204,6 +201,9 @@ const TAtable  = () => {
             <DeleteIcon />
           </IconButton>
         </Tooltip> */}
+        <Tooltip title="Delete">
+            <OnOffSwitch/>
+        </Tooltip>
       </Box>
     ),
     renderTopToolbarCustomActions: ({ table }) => (
@@ -233,8 +233,8 @@ const TAtable  = () => {
   });
 
   return (
-    <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
-        
+    <Box sx={{display:'flex', flexDirection:'column', alignItems:'center' }}>
+        <h2>Hello, Saras</h2>
         <MaterialReactTable table={table} />
     </Box>
   );
