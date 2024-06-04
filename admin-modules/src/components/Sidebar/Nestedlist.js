@@ -24,7 +24,7 @@ const NestedList = () => {
   
     return (
         <List
-        sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+        sx={{ width: '100%', maxWidth: 360 , color: 'white'}}
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
@@ -37,7 +37,7 @@ const NestedList = () => {
           {openManageTAs ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openManageTAs} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List component="div" disablePadding sx={{boxShadow : '0 0 10px 0 rgba(0, 0, 0, 0.3)', borderRadius:'0 0 20px 20px'}}>
             <ListItemButton sx={{ pl: 4 }}>
               <ListItemText primary="TA Mapping" />
             </ListItemButton>
@@ -55,7 +55,7 @@ const NestedList = () => {
           {openManageCoaches ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openManageCoaches} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List component="div" disablePadding sx={{boxShadow : '0 0 10px 0 rgba(0, 0, 0, 0.3)', borderRadius:'0 0 20px 20px'}}>
             <ListItemButton sx={{ pl: 4 }}>
               <ListItemText primary="Coach Mapping" />
             </ListItemButton>

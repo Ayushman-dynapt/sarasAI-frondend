@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -28,12 +27,6 @@ const Sidebar = (props) => {
       setMobileOpen(!mobileOpen);
     }
   };
-
-  const drawer = (
-    <div style={{marginTop : '30px'}}>
-    <NestedList />
-    </div>
-  );
 
   // Remove this const when copying and pasting into your project.
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -69,20 +62,24 @@ const Sidebar = (props) => {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '200px' ,backgroundColor: 'transparent' },
           }}
         >
-          {drawer}
+            <div style={{marginTop : '50px'}}>
+                <NestedList />
+            </div>
         </Drawer>
         <Drawer
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth , height: '90vh' , marginTop: '75px'},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '16vw' , height: '90vh' , marginTop: '75px', backgroundColor: 'transparent'},
           }}
           open
         >
-          {drawer}
+         <div style={{marginTop : '30px'}}>
+            <NestedList />
+        </div>
         </Drawer>
       </Box>
     </Box>
