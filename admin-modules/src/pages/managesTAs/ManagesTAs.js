@@ -33,6 +33,12 @@ const TAtable  = () => {
     () => [
 
       {
+        accessorKey: 'username',
+        header: 'Username',
+        enableEditing: false
+      },
+
+      {
         accessorKey: 'taName',
         header: 'TA Name',
         muiEditTextFieldProps: {
@@ -48,28 +54,23 @@ const TAtable  = () => {
           //optionally add validation checking for onBlur or onChange
         },
       },
-      {
-        accessorKey: 'username',
-        header: 'Username',
-        enableEditing: false,
-        size: 80,
-      },
+    
       {
         accessorKey: 'location',
         header: 'Location',
         editVariant: 'select',
-        //editSelectOptions: usStates,
+        editSelectOptions: managetas['locations'], // TODO: options for select location
         muiEditTextFieldProps: {
           select: true,
-          error: !!validationErrors?.state,
-          helperText: validationErrors?.state,
+          error: !!validationErrors?.location,
+          helperText: validationErrors?.location,
         },
       },
       {
         accessorKey: 'timezone',
-        header: 'Timezone',
+        header: 'Time Zone',
         editVariant: 'select',
-        //editSelectOptions: usStates,
+        editSelectOptions: managetas['timezones'],  // options for select timezone
         muiEditTextFieldProps: {
           select: true,
           error: !!validationErrors?.timezone,
@@ -82,8 +83,7 @@ const TAtable  = () => {
   );
 
   //call CREATE hook
-  const { mutateAsync: createUser, isPending: isCreatingUser } =
-    useCreateUser();
+  const { mutateAsync: createUser, isPending: isCreatingUser } = useCreateUser();
   //call READ hook
   const {
     data: fetchedUsers = [],
@@ -100,6 +100,7 @@ const TAtable  = () => {
 
   //CREATE action
   const handleCreateUser = async ({ values, table }) => {
+    console.log('in handleCreateUser -- ', values);
     const newValidationErrors = validateUser(values);
     if (Object.values(newValidationErrors).some((error) => error)) {
       setValidationErrors(newValidationErrors);
@@ -136,7 +137,9 @@ const TAtable  = () => {
     editDisplayMode: 'modal', //default ('row', 'cell', 'table', and 'custom' are also available)
     enableEditing: true,
     enableRowNumbers : true,
-    getRowId: (row) => row.id,
+    enableDensityToggle: false,
+    enableFullScreenToggle: false,
+    getRowId: (row) => row.username, //unique id for each row
     muiToolbarAlertBannerProps: isLoadingUsersError
       ? {
           color: 'error',
@@ -206,7 +209,8 @@ const TAtable  = () => {
       </>
     ),
     renderRowActions: ({ row, table }) => (
-      <Box sx={{ display: 'flex', gap: '1rem' }}>
+      <Box sx={{ display: 'flex', gap: '0.2rem' }}>
+        <OnOffSwitch/>
         <Tooltip title="Edit">
           <IconButton onClick={() => table.setEditingRow(row)}>
             <EditIcon />
@@ -217,9 +221,6 @@ const TAtable  = () => {
             <DeleteIcon />
           </IconButton>
         </Tooltip> */}
-        <Tooltip title="Delete">
-            <OnOffSwitch/>
-        </Tooltip>
       </Box>
     ),
     state: {
@@ -232,7 +233,7 @@ const TAtable  = () => {
 
   return (
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center' }}>
-        <Box sx={{width:'65vw',display:'flex', flexDirection:'row' , justifyContent:'space-between', alignItems:'center' }}>
+        <Box sx={{width:'68vw',display:'flex', flexDirection:'row' , justifyContent:'space-between', alignItems:'center' }}>
           <h2>Hello, Saras</h2>
           <Button
             variant="contained"
@@ -262,6 +263,7 @@ const TAtable  = () => {
 //CREATE hook (post new user to api)
 function useCreateUser() {
   const queryClient = useQueryClient();
+  console.log('in useCreateUser --');
   return useMutation({
     mutationFn: async (user) => {
       //send api update request here
@@ -274,7 +276,7 @@ function useCreateUser() {
         ...prevUsers,
         {
           ...newUserInfo,
-          id: (Math.random() + 1).toString(36).substring(7),
+          username: (Math.random() + 1).toString(36).substring(7),
         },
       ]);
     },
@@ -289,7 +291,7 @@ function useGetUsers() {
     queryFn: async () => {
       //send api request here
       await new Promise((resolve) => setTimeout(resolve, 1000)); //fake api call
-      return Promise.resolve(managetas);
+      return Promise.resolve(managetas['userdata']);
     },
     refetchOnWindowFocus: false,
   });
@@ -308,7 +310,7 @@ function useUpdateUser() {
     onMutate: (newUserInfo) => {
       queryClient.setQueryData(['users'], (prevUsers) =>
         prevUsers?.map((prevUser) =>
-          prevUser.id === newUserInfo.id ? newUserInfo : prevUser,
+          prevUser.username === newUserInfo.username ? newUserInfo : prevUser,
         ),
       );
     },

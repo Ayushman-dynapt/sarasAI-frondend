@@ -1,4 +1,4 @@
-[
+{"userdata" : [
     {
         "taName" : "ta1",
         "username" : "ta1dtre",
@@ -18,126 +18,54 @@
         "timezone" : "timezone3"
     },
     {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
+        "taName" : "ta4",
+        "username" : "ta4dtre",
+        "location" : "location4",
+        "timezone" : "timezone4"
     },
     {
-        "taName" : "ta2",
-        "username" : "ta2dtre",
-        "location" : "location2",
-        "timezone" : "timezone2"
+        "taName" : "ta5",
+        "username" : "ta5dtre",
+        "location" : "location5",
+        "timezone" : "timezone5"
     },
     {
-        "taName" : "ta3",
-        "username" : "ta3dtre",
-        "location" : "location3",
-        "timezone" : "timezone3"
-    }
-    ,
+        "taName" : "ta6",
+        "username" : "ta6dtre",
+        "location" : "location6",
+        "timezone" : "timezone6"
+    },
     {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
+        "taName" : "ta7",
+        "username" : "ta7dtre",
+        "location" : "location7",
+        "timezone" : "timezone7"
+    },
     {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
+        "taName" : "ta8",
+        "username" : "ta8dtre",
+        "location" : "location8",
+        "timezone" : "timezone8"
+    },
     {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
+        "taName" : "ta9",
+        "username" : "ta9dtre",
+        "location" : "location9",
+        "timezone" : "timezone9"
+    },
     {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
-    }
-    ,
-    {
-        "taName" : "ta1",
-        "username" : "ta1dtre",
-        "location" : "location1",
-        "timezone" : "timezone1"
+        "taName" : "ta10",
+        "username" : "ta10dtre",
+        "location" : "location10",
+        "timezone" : "timezone10"
     }
 ]
+,
+
+"locations" : [ "location1", "location2", "location3", "location4", "location5", "location6", "location7", "location8", "location9", "location10"],
+
+"timezones" : [ "timezone1", "timezone2", "timezone3", "timezone4", "timezone5", "timezone6", "timezone7", "timezone8", "timezone9", "timezone10"]
+
+}
+
+
