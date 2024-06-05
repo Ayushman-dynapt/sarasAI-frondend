@@ -131,7 +131,7 @@ const TAtable  = () => {
 
   const table = useMaterialReactTable({
     columns,
-    data:  managetas || fetchedUsers, //use the fetched data from the api
+    data: fetchedUsers, //use the fetched data from the api
     createDisplayMode: 'modal', //default ('row', and 'custom' are also available)
     editDisplayMode: 'modal', //default ('row', 'cell', 'table', and 'custom' are also available)
     enableEditing: true,
@@ -154,9 +154,25 @@ const TAtable  = () => {
     muiPaginationProps: {
       showRowsPerPage: false,
       variant: 'outlined',
-      color: 'primary'
+      color: 'primary',
+      sx: {
+        width: '65vw',
+        display: 'flex',
+        justifyContent: 'center'
+      },
+    },
+    muiBottomToolbarProps: {
+      sx: {
+        display: 'flex',
+        justifyContent: 'center'
+      },
     },
   paginationDisplayMode: 'pages',
+  initialState: {
+    pagination: {
+      pageSize: 7,
+    },
+  },
     onCreatingRowCancel: () => setValidationErrors({}),
     onCreatingRowSave: handleCreateUser,
     onEditingRowCancel: () => setValidationErrors({}),
@@ -273,7 +289,7 @@ function useGetUsers() {
     queryFn: async () => {
       //send api request here
       await new Promise((resolve) => setTimeout(resolve, 1000)); //fake api call
-      //return Promise.resolve(fakeData);
+      return Promise.resolve(managetas);
     },
     refetchOnWindowFocus: false,
   });
