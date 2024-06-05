@@ -206,24 +206,6 @@ const TAtable  = () => {
         </Tooltip>
       </Box>
     ),
-    renderTopToolbarCustomActions: ({ table }) => (
-      <Button
-        variant="contained"
-        sx={{ backgroundColor: '#db5014'}}
-        startIcon={<ControlPointOutlinedIcon />}
-        onClick={() => {
-          table.setCreatingRow(true); //simplest way to open the create row modal with no default values
-          //or you can pass in a row object to set default values with the `createRow` helper function
-          // table.setCreatingRow(
-          //   createRow(table, {
-          //     //optionally pass in default values for the new row, useful for nested data or other complex scenarios
-          //   }),
-          // );
-        }}
-      >
-        Create TA
-      </Button>
-    ),
     state: {
       isLoading: isLoadingUsers,
       isSaving: isCreatingUser || isUpdatingUser, //isDeletingUser,
@@ -234,8 +216,28 @@ const TAtable  = () => {
 
   return (
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center' }}>
-        <h2>Hello, Saras</h2>
-        <MaterialReactTable table={table} />
+        <Box sx={{width:'65vw',display:'flex', flexDirection:'row' , justifyContent:'space-between', alignItems:'center' }}>
+          <h2>Hello, Saras</h2>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#db5014', width:'150px' , height:'40px' , borderRadius: '20px' }}
+            startIcon={<ControlPointOutlinedIcon />}
+            onClick={() => {
+              table.setCreatingRow(true); //simplest way to open the create row modal with no default values
+              //or you can pass in a row object to set default values with the `createRow` helper function
+              // table.setCreatingRow(
+              //   createRow(table, {
+              //     //optionally pass in default values for the new row, useful for nested data or other complex scenarios
+              //   }),
+              // );
+            }}
+          >
+            Create TA
+        </Button>
+        </Box>
+        <Box sx={{display:'flex'}}>
+            <MaterialReactTable table={table} />
+        </Box>
     </Box>
   );
   
